@@ -2,6 +2,7 @@
 let lastSides = null; // Almacenar el último tipo de dado (número de caras)
 let lastTiradas = null; // Almacenar el último número de tiradas
 
+
 // Función para lanzar los dados
 function rollDice(sides) {
     const numTiradas = document.getElementById('num-tiradas').value || 4; // Número de tiradas, por defecto es 4
@@ -22,10 +23,14 @@ function rollDice(sides) {
         // Crear un nuevo dado (cuadrado) para cada tirada
         const dice = document.createElement('div');
         dice.classList.add('dice', 'animate'); // Añadir clase de animación
-        dice.textContent = result; // Mostrar el resultado en el dado
 
         // Añadir el dado al contenedor principal
         diceContainer.appendChild(dice);
+
+        // Mostrar el número con un retraso (por ejemplo, 1 segundo)
+        setTimeout(() => {
+            dice.textContent = result; // Mostrar el resultado en el dado
+        }, 1000); // Duración del retraso en ms (1s)
 
         // Eliminar la clase de animación después de 1 segundo
         setTimeout(() => {
