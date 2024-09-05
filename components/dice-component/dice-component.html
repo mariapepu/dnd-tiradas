@@ -1,0 +1,33 @@
+<!-- dice-component.html -->
+<div class="dice-section">
+    <h2 class="mb-4">Tira los dados</h2>
+
+    <!-- Input para la cantidad de tiradas con valor por defecto de 4 -->
+    <div class="mb-4">
+        <label for="num-tiradas" class="form-label">Número de tiradas:</label>
+        <input type="number" id="num-tiradas" class="form-control w-25 mx-auto" min="1" value="4">
+    </div>
+
+    <div class="dice-container mb-4" id="dice-container">
+        <!-- Aquí se mostrarán los resultados de las tiradas -->
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-4">
+        <button class="btn btn-outline-primary" onclick="rollDice(4)">D4</button>
+        <button class="btn btn-outline-primary" onclick="rollDice(6)">D6</button>
+        <button class="btn btn-outline-primary" onclick="rollDice(8)">D8</button>
+        <button class="btn btn-outline-primary" onclick="rollDice(10)">D10</button>
+        <button class="btn btn-outline-primary" onclick="rollDice(12)">D12</button>
+        <button class="btn btn-outline-primary" onclick="rollDice(20)">D20</button>
+    </div>
+
+    <div id="total-container" class="mb-4">
+        <!-- Aquí se mostrará el total de los 3 más altos -->
+    </div>
+
+    <!-- Botones de Repetir y Resetear -->
+    <div class="d-flex justify-content-center mb-4">
+        <button class="btn btn-warning mx-2" id="repeat-button" onclick="repeatLastRoll()" disabled>Repetir tirada</button>
+        <button class="btn btn-danger mx-2" onclick="resetGame()">Resetear</button>
+    </div>
+</div>
