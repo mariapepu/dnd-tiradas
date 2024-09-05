@@ -1,12 +1,13 @@
 /* Estilo para el área de la tabla que puede crecer */
 .scrolling-table {
     text-align: center;
-    max-height: calc(100vh - 400px); /* Definir el espacio máximo que puede ocupar la tabla */
-    overflow-y: auto; /* Permitir el desplazamiento si la tabla crece demasiado */
+    max-height: calc(100vh - 400px);
+    /* Definir el espacio máximo que puede ocupar la tabla */
+    overflow-y: auto;
+    /* Permitir el desplazamiento si la tabla crece demasiado */
     padding: 5% 20%;
     background-color: #2c2f33;
     width: 100vw;
-    margin: -20px;
 }
 
 .scrolling-table h3 {
@@ -15,11 +16,14 @@
 
 /* Centrar el contenido de las celdas de la tabla */
 td {
-    vertical-align: middle; /* Alinear verticalmente al centro */
-    text-align: center; /* Alinear horizontalmente al centro */
+    vertical-align: middle;
+    /* Alinear verticalmente al centro */
+    text-align: center;
+    /* Alinear horizontalmente al centro */
 }
 
 /* Ajustar el tamaño de la fuente en la celda de total */
 td:last-child {
-    font-size: 22px; /* Tamaño de la letra para el total */
+    font-size: 22px;
+    /* Tamaño de la letra para el total */
 }

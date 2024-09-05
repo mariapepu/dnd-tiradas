@@ -1,26 +1,30 @@
 /* Asegurarse de que el cuerpo ocupa toda la pantalla */
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-color:#23272a; /* Color de fondo */
+    background-color: #23272a;
+    /* Color de fondo */
     width: 100%;
-
 }
 
 /* Contenedor principal */
 .content-container {
+    text-align: center;
     margin-top: 10%;
+    margin-bottom: 10%;
     width: 100%;
     background-color: #23272a;
 }
 
 /* No usar `position: fixed` para evitar que el contenido interactivo se bloquee */
 .fixed-content {
-    position: relative; /* No usar `fixed` */
+    position: relative;
+    /* No usar `fixed` */
     margin-bottom: 10%;
 
 }
