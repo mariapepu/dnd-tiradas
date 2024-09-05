@@ -1,39 +1,54 @@
-// dice-component.js
+// Variables globales para almacenar el estado de la última tirada
+let lastSides = null; // Almacenar el último tipo de dado (número de caras)
+let lastTiradas = null; // Almacenar el último número de tiradas
 
-let lastSides = null; // Para almacenar el último tipo de dado
-let lastTiradas = null; // Para almacenar el último número de tiradas
-
-// Función para lanzar un dado
+// Función para lanzar los dados
 function rollDice(sides) {
-    const numTiradas = document.getElementById('num-tiradas').value || 4; // Número de tiradas por defecto es 4
+    const numTiradas = document.getElementById('num-tiradas').value || 4; // Número de tiradas, por defecto es 4
     const diceContainer = document.getElementById('dice-container');
     const totalContainer = document.getElementById('total-container');
-    diceContainer.innerHTML = ''; // Limpiar los dados anteriores
-    totalContainer.innerHTML = ''; // Limpiar el total anterior
+    
+    // Limpiar el contenido anterior
+    diceContainer.innerHTML = '';
+    totalContainer.innerHTML = '';
 
     const results = []; // Almacenar los resultados de las tiradas
 
     // Generar los resultados de los dados
     for (let i = 0; i < numTiradas; i++) {
-        const result = Math.floor(Math.random() * sides) + 1;
+        const result = Math.floor(Math.random() * sides) + 1; // Generar número aleatorio
         results.push(result);
 
+        // Crear un nuevo dado (cuadrado) para cada tirada
         const dice = document.createElement('div');
-        dice.classList.add('dice');
-        dice.textContent = result; // Mostrar el resultado dentro del dado
+        dice.classList.add('dice', 'animate'); // Añadir clase de animación
+        dice.textContent = result; // Mostrar el resultado en el dado
+
+        // Añadir el dado al contenedor principal
         diceContainer.appendChild(dice);
+
+        // Eliminar la clase de animación después de 1 segundo
+        setTimeout(() => {
+            dice.classList.remove('animate');
+        }, 1000); // Duración de la animación en ms (1s)
     }
 
+    // Ordenar los resultados en orden descendente
     const sortedResults = results.sort((a, b) => b - a);
+
+    // Tomar los tres resultados más altos
     const topThreeResults = sortedResults.slice(0, 3);
+
+    // Calcular el total sumando los tres resultados más altos
     const total = topThreeResults.reduce((acc, curr) => acc + curr, 0);
 
+    // Mostrar el total en el contenedor de total
     const totalP = document.createElement('p');
     totalP.className = "fs-4";
     totalP.innerHTML = `Total de los 3 más altos: <span id="total">${total}</span>`;
     totalContainer.appendChild(totalP);
 
-    // Almacenar los últimos valores para repetir tirada
+    // Almacenar los últimos valores para repetir la tirada
     lastSides = sides;
     lastTiradas = numTiradas;
 
@@ -51,7 +66,7 @@ function rollDice(sides) {
 // Función para repetir la última tirada
 function repeatLastRoll() {
     if (lastSides !== null && lastTiradas !== null) {
-        rollDice(lastSides);
+        rollDice(lastSides); // Repetir la tirada con el mismo número de lados y tiradas
     }
 }
 
@@ -59,8 +74,10 @@ function repeatLastRoll() {
 function resetGame() {
     const diceContainer = document.getElementById('dice-container');
     const totalContainer = document.getElementById('total-container');
-    diceContainer.innerHTML = ''; // Limpiar los resultados
-    totalContainer.innerHTML = ''; // Limpiar el total
+    
+    // Limpiar los resultados anteriores
+    diceContainer.innerHTML = '';
+    totalContainer.innerHTML = '';
 
     // Desactivar el botón de "Repetir tirada"
     document.getElementById('repeat-button').disabled = true;

@@ -25,12 +25,6 @@
     border-radius: 10px;
 }
 
-
-.dice.animate {
-    transform: rotate(360deg);
-    /* Rotación del dado */
-}
-
 .dice-container {
     display: flex;
     justify-content: center;
@@ -41,4 +35,19 @@
 .dice-section {
     margin-top: 2%;
     margin-bottom: 8%;
+}
+
+/* Animación de rotación para los dados */
+.dice.animate {
+    animation: spin 1s ease-in-out;
+}
+
+/* Definición de la animación de giro */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
